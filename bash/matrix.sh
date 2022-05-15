@@ -2,6 +2,11 @@
 COL=80
 ROW=$(tput lines)
 
+# "\033[$r;$1H\033[0;0m\u004C"
+# $1H is the column  can be changed with +1 +2 depending on the length of the word so $[5 + $1]H
+# ;0m is the color. check online the different colors like 32m is green
+# \u004C is the unicode of the character L. search the unicode list of characters and change the 0004C
+
 dropL() { # $1=column ; $2=row to end on ; $3 = drop size (ranges from 5 to 15)
   for ((r=1; r<$2+$3+1; r++)); do
     # if before drop's end point : print lowest char in white
