@@ -3,45 +3,52 @@
     <style></style>
   </head>
   <body style="background-color: rgb(0, 0, 0); color: rgb(0, 102, 0);">
-    
     <script type="text/javascript">
       window.onload = function() {
         var tbl = document.createElement('table'),
-        body = document.body;
+          body = document.body;
         body.style.backgroundColor = '#000';
-        body.style.color = 'red';
+        body.style.color = 'white';
         body.style.fontFamily = 'Lucida Console';
         for (var i = 0; i <= 30; i++) {
           var tr = tbl.insertRow();
-          for (var j = 0; j <= 50; j++) {
+          for (var j = 0; j <= 10; j++) {
             var td = tr.insertCell();
-            td.style.width="2%"
+            td.style.width = "10%"
+            td.style.textAlign = "center"
           }
         }
         body.appendChild(tbl);
         setInterval(function() {
-          rain(Math.floor((Math.random() * 50)), 0)
-        }, 100);
+          let x = Math.floor((Math.random() * 3))
+          switch (x) {
+            case 0:
+              rain(Math.floor((Math.random() * 10)), 0, "u cute", "purple")
+              break;
+            case 1:
+              rain(Math.floor((Math.random() * 10)), 0, "penge kiss", "red")
+              break;
+            case 2:
+              rain(Math.floor((Math.random() * 10)), 0, "mwa mwa chup chup", "Beige")
+              break;
+          }
+        }, 500);
       }
 
-      function rain(n, i) {
+      function rain(n, i, s, v) {
         setTimeout(function() {
           var e = document.getElementsByTagName('tr')[i].childNodes[n];
-
-            e.innerHTML = '♥';
-
+          e.innerHTML = s;
+          e.style.color = v;
           setTimeout(function() {
             e.style.color = ''
             e.innerHTML = ''
-          }, 1000)
-
-          if (i++ < 30){
-            rain(n, i);
+          }, 500)
+          if (i++ < 30) {
+            rain(n, i, s, v);
           }
-          
-        }, 20);
+        }, 500);
       };
     </script>
-
   </body>
 </html>
